@@ -1,0 +1,15 @@
+{
+  "name": "affiliateo",
+  "description": "Run your affiliate programs, products, revenue and ads from Claude.",
+  "owner": {
+    "name": "Affiliateo",
+    "url": "https://affiliateo.com"
+  },
+  "plugins": [
+    {
+      "name": "affiliateo",
+      "source": "./",
+      "description": "Run your Affiliateo business from your AI agent: affiliate programs and payouts, products, revenue and customers, invoices, leads and bookings, paid ads on six networks, funnels, courses, community, support and Live Chat."
+    }
+  ]
+}

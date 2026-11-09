@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "affiliateo": {
+      "type": "streamable-http",
+      "url": "https://affiliateo.com/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${AFFILIATEO_API_KEY}"
+      }
+    }
+  }
+}

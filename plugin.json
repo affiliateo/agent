@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "affiliateo",
+  "version": "1.0.0",
+  "description": "Run your Affiliateo business from your AI agent: affiliate programs and payouts, products, revenue and customers, invoices, leads and bookings, paid ads on six networks, funnels, courses, community, support and Live Chat.",
+  "author": {
+    "name": "Affiliateo",
+    "url": "https://affiliateo.com"
+  },
+  "homepage": "https://affiliateo.com/docs/api",
+  "repository": "https://github.com/affiliateo/agent",
+  "license": "MIT",
+  "keywords": ["affiliate", "affiliate-marketing", "payouts", "revenue", "ads", "mcp"],
+  "extensions": {
+    "com.nousresearch.hermes": {
+      "config_schema": {
+        "api_key": {
+          "type": "secret",
+          "env": "AFFILIATEO_API_KEY",
+          "label": "Affiliateo API key",
+          "description": "Create one at affiliateo.com: open a business dashboard, then the API tab. It starts with afk_.",
+          "required": true
+        }
+      },
+      "servers": {
+        "affiliateo": {
+          "trust": "untrusted"
+        }
+      }
+    }
+  }
+}
