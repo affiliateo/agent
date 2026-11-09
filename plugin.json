@@ -10,7 +10,14 @@
   "homepage": "https://affiliateo.com/docs/api",
   "repository": "https://github.com/affiliateo/agent",
   "license": "MIT",
-  "keywords": ["affiliate", "affiliate-marketing", "payouts", "revenue", "ads", "mcp"],
+  "keywords": [
+    "affiliate",
+    "affiliate-marketing",
+    "payouts",
+    "revenue",
+    "ads",
+    "mcp"
+  ],
   "extensions": {
     "com.nousresearch.hermes": {
       "config_schema": {
@@ -18,8 +25,7 @@
           "type": "secret",
           "env": "AFFILIATEO_API_KEY",
           "label": "Affiliateo API key",
-          "description": "Create one at affiliateo.com: open a business dashboard, then the API tab. It starts with afk_.",
-          "required": true
+          "description": "Create one at affiliateo.com: open a business dashboard, then the API tab. It starts with afk_."
         }
       },
       "servers": {
