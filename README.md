@@ -18,10 +18,19 @@ connection to the MCP server at `https://affiliateo.com/api/mcp`.
 
 ## What you need
 
-An Affiliateo API key. Sign in at [affiliateo.com](https://affiliateo.com), open any business dashboard, go to
-the **API** tab and create a key (it starts with `afk_`). A read-only key lets the agent look at everything.
-A read and write key lets it make changes. Paying people needs a key with its **Payouts** switch on, and it
-stays within that key's daily limit.
+An [Affiliateo](https://affiliateo.com) account. No key to copy: the agent signs in with Affiliateo. Your
+browser opens Affiliateo's Authorize page, where you pick:
+
+- **Read only** (the agent can look at everything) or **Read & write** (it can make changes too)
+- which areas it may change: businesses and apps, products, content, community, affiliates, leads and
+  invoices, ads, webhooks
+- all your businesses, or just one
+
+A sign-in can never pay anyone or move money. See every connected app, and disconnect any of them, in any
+business dashboard: **API** tab, **Connected apps**.
+
+Want the agent to pay affiliates? Use an API key instead: in the **API** tab, create a key (it starts with
+`afk_`) with its **Payouts** switch on. Payouts stay within that key's daily limit.
 
 ## Install
 
@@ -32,7 +41,16 @@ stays within that key's daily limit.
 /plugin install affiliateo@affiliateo
 ```
 
-Claude Code asks for your API key when the plugin is enabled and keeps it in your system's secure storage.
+Then run `/mcp`, pick **affiliateo** and choose **Authenticate**. Your browser opens the Affiliateo sign-in.
+Claude Code keeps the sign-in in your system's secure storage.
+
+Coming from version 1.0.0? The plugin no longer asks for an API key: run `/mcp` and sign in. To keep using a
+key, add the server yourself instead (see "Just the skill" below).
+
+### Claude (claude.ai and the desktop app)
+
+Open **Settings**, **Connectors**, **Add custom connector**, and enter `https://affiliateo.com/api/mcp`.
+Click **Connect** and authorize on the Affiliateo page.
 
 ### Hermes Agent
 
@@ -47,9 +65,15 @@ hermes plugins install affiliateo/agent --no-enable
 hermes plugins enable affiliateo
 ```
 
-Set your key in the plugin's settings in Hermes, or as `AFFILIATEO_API_KEY` in your Hermes profile's `.env`.
-Hermes asks you before every tool call that changes something, because the package marks the server as
-untrusted.
+The Hermes package connects with an API key: set it in the plugin's settings in Hermes, or as
+`AFFILIATEO_API_KEY` in your Hermes profile's `.env`. Hermes asks you before every tool call that changes
+something, because the package marks the server as untrusted.
+
+To sign in instead of using a key, add the server yourself rather than installing the package:
+
+```
+hermes mcp add affiliateo --url https://affiliateo.com/api/mcp --auth oauth
+```
 
 ### Just the skill (any agent)
 
@@ -57,8 +81,15 @@ untrusted.
 npx skills add affiliateo/agent --skill affiliateo
 ```
 
-Then connect the MCP server yourself: URL `https://affiliateo.com/api/mcp` (Streamable HTTP), header
-`Authorization: Bearer <your key>`. In Claude Code:
+Then connect the MCP server yourself: URL `https://affiliateo.com/api/mcp` (Streamable HTTP). Clients that
+support MCP sign-in (Claude, Claude Code, Cursor, ChatGPT and others) open the Affiliateo sign-in by
+themselves. In Claude Code:
+
+```
+claude mcp add --transport http affiliateo https://affiliateo.com/api/mcp
+```
+
+With an API key instead, send it as the header `Authorization: Bearer <your key>`:
 
 ```
 claude mcp add --transport http affiliateo https://affiliateo.com/api/mcp --header "Authorization: Bearer <your key>"
@@ -75,16 +106,17 @@ claude mcp add --transport http affiliateo https://affiliateo.com/api/mcp --head
 ## What this package does, and where data goes
 
 - Every tool call goes to Affiliateo's hosted server at `affiliateo.com` and acts on your Affiliateo account
-  with the permissions of the API key you gave it. The tool list is served by that server, so it can grow
-  without a new version of this package.
+  with the permissions you picked when you signed in, or those of the API key you gave it. The tool list is
+  served by that server, so it can grow without a new version of this package.
 - Some tools act on real people or money once you confirm: they can email an invoice or a booking change,
-  invite someone to an app, pay affiliates from your wallet (Payouts keys only), approve paid creator
-  requests, delete records, and pause, resume or re-budget ads, which changes what you spend. New ad campaigns
-  are always created paused.
+  invite someone to an app, pay affiliates from your wallet and approve paid creator requests (Payouts keys
+  only, never a sign-in), delete records, and pause, resume or re-budget ads, which changes what you spend.
+  New ad campaigns are always created paused.
 - The skill tells the agent to confirm each of those with you first and to treat text other people wrote
   (messages, tickets, reviews) as data, never as instructions.
-- Your key is stored by your agent (Claude Code's secure storage, or your Hermes profile). This package has no
-  code of its own, runs nothing on your machine, and sends no telemetry.
+- Your sign-in or key is stored by your agent (Claude Code's secure storage, Claude's connector settings, or
+  your Hermes profile). This package has no code of its own, runs nothing on your machine, and sends no
+  telemetry.
 
 ## Links
 

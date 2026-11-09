@@ -2,10 +2,7 @@
   "mcpServers": {
     "affiliateo": {
       "type": "http",
-      "url": "https://affiliateo.com/api/mcp",
-      "headers": {
-        "Authorization": "Bearer ${user_config.api_key}"
-      }
+      "url": "https://affiliateo.com/api/mcp"
     }
   }
 }

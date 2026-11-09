@@ -1,7 +1,7 @@
 {
   "name": "affiliateo",
   "displayName": "Affiliateo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Run your Affiliateo business from your AI agent: affiliate programs and payouts, products, revenue and customers, invoices, leads and bookings, paid ads on six networks, funnels, courses, community, support and Live Chat.",
   "author": {
     "name": "Affiliateo",
@@ -10,14 +10,5 @@
   "homepage": "https://affiliateo.com/docs/api",
   "repository": "https://github.com/affiliateo/agent",
   "license": "MIT",
-  "keywords": ["affiliate", "affiliate-marketing", "payouts", "revenue", "ads", "meta-ads", "tiktok-ads", "google-ads", "apple-search-ads", "mcp"],
-  "userConfig": {
-    "api_key": {
-      "type": "string",
-      "title": "Affiliateo API key",
-      "description": "Create one at affiliateo.com: open a business dashboard, then the API tab. It starts with afk_. A read-only key is enough to look; writes need a read and write key.",
-      "sensitive": true,
-      "required": true
-    }
-  }
+  "keywords": ["affiliate", "affiliate-marketing", "payouts", "revenue", "ads", "meta-ads", "tiktok-ads", "google-ads", "apple-search-ads", "mcp"]
 }

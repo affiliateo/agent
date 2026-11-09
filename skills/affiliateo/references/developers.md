@@ -14,7 +14,7 @@ can share a link and see what they earned without leaving it.
   server by date (`from`, `to`) and type (`type=refund,chargeback` and so on). Always filter on the server;
   filtering one fetched page misses older rows.
 
-Do **not** use the `my_*` tools for this. They return whoever owns the API key, never one of the developer's
+Do **not** use the `my_*` tools for this. They return whoever signed in or owns the API key, never one of the developer's
 users.
 
 ## The three embedded Elements

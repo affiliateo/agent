@@ -10,7 +10,8 @@ All amounts are integer cents (USD unless a field says otherwise). Show them as 
 3. `pay_affiliates` with `affiliate_ids` from step 1, or `all: true`. Money leaves the owner's wallet and each
    person is told.
 
-The key needs its **Payouts** switch on, and each run counts against the key's daily limit. Past the limit
+This needs an API key with its **Payouts** switch on (a sign-in never shows `pay_affiliates`), and each run
+counts against the key's daily limit. Past the limit
 nobody is paid (`PAYOUT_LIMIT_EXCEEDED`): tell the owner to pay the rest from the dashboard or raise the limit.
 `stopped_early: true` means call it again for the rest.
 
